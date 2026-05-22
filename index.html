@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatic Writing Guide — Ceyda Seren</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F0E4E8;
+    --cream-light: #F7EFF2;
+    --parchment: #E8D5DB;
+    --rose: #A8637A;
+    --rose-light: #C9899E;
+    --rose-pale: #EDD5DD;
+    --muted: #7D6370;
+    --dark: #3A2030;
+    --text: #4A2D3A;
+    --border: rgba(168, 99, 122, 0.22);
+  }
+
+  body {
+    background: var(--cream-light);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(160deg, #E8C8D4 0%, #DDB8C8 35%, #C99AAF 70%, #BF8FA6 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,240,248,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 80%, rgba(168,99,122,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
+  }
+
+  .cover-inner { position: relative; z-index: 1; max-width: 560px; }
+
+  .cover-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(64px, 12vw, 96px);
+    line-height: 0.9;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    font-weight: 300;
+    display: block;
+    font-size: 0.55em;
+    letter-spacing: 0.05em;
+    color: var(--rose);
+    margin-top: 8px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--rose);
+    margin: 32px auto;
+    opacity: 0.6;
+  }
+
+  .cover-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0 auto 48px;
+  }
+
+  .cover-author {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* LAYOUT */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .section { margin-bottom: 80px; }
+
+  /* TYPOGRAPHY */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 28px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .body-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 600px;
+  }
+
+  .body-text + .body-text { margin-top: 16px; }
+
+  /* INTRO / HELLO */
+  .hello-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .hello-intro .body-text { max-width: 100%; }
+
+  .hello-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .avatar-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--rose-pale);
+  }
+
+  .avatar-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--rose);
+    font-style: italic;
+  }
+
+  .moon-phases {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    opacity: 0.5;
+  }
+
+  .moon { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--rose); }
+  .moon.full { background: var(--rose-light); }
+  .moon.crescent { background: transparent; border-right-color: transparent; transform: rotate(-30deg); }
+
+  .signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-top: 24px;
+  }
+
+  /* DIVIDER */
+  .ornament {
+    text-align: center;
+    margin: 48px 0;
+    color: var(--rose-light);
+    font-size: 20px;
+    letter-spacing: 16px;
+  }
+
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 48px;
+  }
+
+  /* CHECKLIST */
+  .checklist-card {
+    background: var(--parchment);
+    border-radius: 2px;
+    padding: 40px;
+    border-left: 3px solid var(--rose-light);
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196,133,106,0.15);
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--text);
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 1px solid var(--rose-light);
+    border-radius: 2px;
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-box.checked {
+    background: var(--rose-light);
+    border-color: var(--rose);
+  }
+
+  .check-box.checked::after {
+    content: '✓';
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+  }
+
+  .checklist-item.done span { text-decoration: line-through; color: var(--muted); }
+
+  /* 3-COLUMN STEPS */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .step-card {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .step-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .step-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* CALLOUT BLOCK */
+  .callout {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 32px 40px;
+    margin: 40px 0;
+  }
+
+  .callout-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+
+  .callout p {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* INVOCATION */
+  .invocation {
+    background: var(--parchment);
+    border-left: 3px solid var(--rose);
+    padding: 28px 32px;
+    border-radius: 0 2px 2px 0;
+    margin: 24px 0;
+  }
+
+  .invocation p {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* PROMPTS */
+  .prompts-wrap {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 40px;
+    margin-top: 32px;
+  }
+
+  .prompt-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196,133,106,0.12);
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .prompt-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .prompt-item:first-child { padding-top: 0; }
+
+  /* NOTES AREA */
+  .notes-area {
+    margin-top: 32px;
+  }
+
+  .notes-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .notes-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .notes-line {
+    border-bottom: 1px solid var(--border);
+    height: 44px;
+  }
+
+  /* CLOSE */
+  .close-section {
+    background: linear-gradient(160deg, #E8C8D4 0%, #DDB8C8 100%);
+    padding: 80px 48px;
+    text-align: center;
+  }
+
+  .close-inner { max-width: 520px; margin: 0 auto; }
+
+  .close-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .close-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--rose);
+    padding: 16px 40px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 48px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: var(--cream-light);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .page { padding: 60px 28px; }
+    .hello-grid { grid-template-columns: 1fr; gap: 40px; }
+    .steps-grid { grid-template-columns: 1fr; gap: 28px; }
+    .checklist-card { padding: 28px; }
+    .prompts-wrap { padding: 28px; }
+    .close-section { padding: 60px 28px; }
+  }
+
+  /* PRINT */
+  .print-btn-wrap {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 8px;
+  }
+
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose);
+    background: transparent;
+    border: 1px solid var(--rose-light);
+    padding: 14px 36px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .print-btn:hover {
+    background: var(--rose-pale);
+  }
+
+  .print-btn svg {
+    flex-shrink: 0;
+  }
+
+  @media print {
+    @page {
+      size: 8.5in 11in;
+      margin: 0.65in 0.75in;
+    }
+
+    body {
+      background: white !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* hide interactive / screen-only elements */
+    .print-btn-wrap,
+    .cta-btn { display: none !important; }
+
+    /* cover fills first page */
+    .cover {
+      min-height: 100vh;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* avoid breaks inside key blocks */
+    .section { page-break-inside: avoid; break-inside: avoid; }
+    .step-card { page-break-inside: avoid; break-inside: avoid; }
+    .checklist-card { page-break-inside: avoid; break-inside: avoid; }
+    .invocation { page-break-inside: avoid; break-inside: avoid; }
+    .callout { page-break-inside: avoid; break-inside: avoid; }
+    .prompts-wrap { page-break-inside: avoid; break-inside: avoid; }
+
+    /* keep step grids together where possible */
+    .steps-grid { page-break-inside: avoid; break-inside: avoid; }
+
+    /* close section on its own page */
+    .close-section {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    /* tighten page padding for print */
+    .page { padding: 32px 0; }
+
+    /* ensure fonts and colours print */
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <h1 class="cover-title">
+      Automatic<br>Writing
+      <em>guide</em>
+    </h1>
+    <div class="cover-divider"></div>
+    <p class="cover-sub">A simple yet powerful process for connecting with your higher self, spirit guides, and divine wisdom.</p>
+    <p class="cover-author">© 2026 Ceyda Seren &amp; Beyond</p>
+  </div>
+</div>
+
+<!-- HELLO -->
+<div class="page">
+  <div class="section">
+    <p class="section-label">Welcome</p>
+    <h2 class="section-title">Hello!</h2>
+
+    <div style="display:flex; gap:48px; align-items:flex-start;">
+      <div style="flex:1;">
+        <p class="body-text">I'm Ceyda, an ex-corporate spirit channeler. A few years ago, I began to receive the message <em style="font-style:italic">"remember who you are."</em> It became something I couldn't ignore, and it set me on this path of personal development and discovering my intuition and soul gifts.</p>
+        <p class="body-text" style="margin-top:16px;">Automatic writing is how I began connecting with my guides. It opened me up to trusting my intuition and it's something I still use today.</p>
+        <p class="signature" style="margin-top:28px;">Ceyda Seren</p>
+      </div>
+      <div style="flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:10px; padding-top:8px; opacity:0.55;">
+        <!-- simple crescent moon -->
+        <svg viewBox="0 0 60 120" width="40" height="80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="18" r="12" fill="none" stroke="#A8637A" stroke-width="1.4"/>
+          <circle cx="35" cy="15" r="9" fill="#F7EFF2" stroke="none"/>
+          <line x1="30" y1="30" x2="30" y2="50" stroke="#A8637A" stroke-width="1" stroke-dasharray="2,3"/>
+          <!-- full moon -->
+          <circle cx="30" cy="64" r="13" fill="none" stroke="#A8637A" stroke-width="1.4"/>
+          <line x1="30" y1="77" x2="30" y2="97" stroke="#A8637A" stroke-width="1" stroke-dasharray="2,3"/>
+          <!-- crescent again -->
+          <circle cx="30" cy="110" r="10" fill="none" stroke="#A8637A" stroke-width="1.4"/>
+          <circle cx="34" cy="108" r="7.5" fill="#F7EFF2" stroke="none"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">What is Automatic Writing</p>
+    <h2 class="section-title">Divine wisdom <em>flowing through you</em></h2>
+    <p class="body-text">Have you ever wondered how to tap into the wisdom of the universe to receive guidance that could change your life? Automatic writing is a simple yet powerful process that will help you connect with your higher self, your spirit guides, Source, and your creativity, so you can get the answers and ideas you've been seeking.</p>
+    <p class="body-text" style="margin-top:16px;">It's perfect when you need clarity on a situation or help making a decision, whether about work, relationships, or personal challenges. Connecting to divine wisdom can help you find ideal solutions and get the ideas flowing.</p>
+
+    <div class="callout" style="margin-top:40px;">
+      <p class="callout-title">A note on consistency</p>
+      <p>Consistency is key in any spiritual practice. Create a routine around your automatic writing sessions so your mind and body know it's time to connect. The more you practice, the stronger the connection will become. This sacred practice will eventually become second nature.</p>
+    </div>
+  </div>
+
+  <!-- SAFETY - NOW STEP ONE -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step One</p>
+    <h2 class="section-title">Safety <em>Checklist</em></h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-name">Set Clear Intentions</div>
+        <p class="step-text">Your thoughts carry great power. Before beginning, state your intentions out loud to create a protective barrier for your session.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-name">Call in Protective Beings</div>
+        <p class="step-text">Invite Archangel Michael or another protective being into your space to shield you from any lower energies during your session.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-name">Pillar of Light Visualization</div>
+        <p class="step-text">Draw energy up from the Earth through your body and into God's light. Then visualize divine energy flowing back down, forming a shield of light around you.</p>
+      </div>
+    </div>
+
+    <div class="invocation" style="margin-top:40px;">
+      <p class="callout-title" style="font-family:'Jost';font-size:10px;letter-spacing:0.35em;color:var(--rose);text-transform:uppercase;font-style:normal;margin-bottom:10px;">Sample Intention Invocation</p>
+      <p>"I intend to connect with only beings of love and light that serve God's plan and are of the highest energy and frequency."</p>
+    </div>
+
+    <div class="invocation">
+      <p class="callout-title" style="font-family:'Jost';font-size:10px;letter-spacing:0.35em;color:var(--rose);text-transform:uppercase;font-style:normal;margin-bottom:10px;">Calling In Archangel Michael</p>
+      <p>"Archangel Michael, I call upon you to guard me during this automatic writing session. Please keep any beings that are not of the light away from me as I open myself up during this sacred practice."</p>
+    </div>
+  </div>
+
+  <!-- SACRED SPACE - STEP TWO -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step Two</p>
+    <h2 class="section-title">Creating Your <em>Sacred Space</em></h2>
+    <p class="body-text">Your sacred space is your sanctuary, a place where you feel completely safe and protected. It doesn't have to be an entire room. A cozy corner of your bedroom, a nook, or even a mental space you create in your mind can serve. The key is to make this space feel high-vibrational and comforting.</p>
+
+    <div class="steps-grid" style="margin-top:40px;">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-name">Choose Your Space</div>
+        <p class="step-text">Pick a spot where you feel peaceful and undisturbed. Consistency matters, so try to use the same spot every time.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-name">Energise Your Space</div>
+        <p class="step-text">Fill it with things that raise your vibration: crystals, candles, incense, oracle cards, images of divine beings, soft blankets, and cushions.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-name">Clear the Space</div>
+        <p class="step-text">Light incense, sage, or use a cleansing spray. As the smoke fills the room, visualize it clearing away any lingering energy, leaving only pure light.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREPARE ENERGY - STEP THREE -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step Three</p>
+    <h2 class="section-title">Prepare Your <em>Energy</em></h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-name">Ground</div>
+        <p class="step-text">Imagine roots going down from your feet into the Earth. Visualize any negative energy flowing through those roots, leaving your body and being absorbed by the Earth.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-name">Pillar of Light</div>
+        <p class="step-text">Do the pillar of light visualization where you visualize energy from Mother Earth and God flowing through you. Imagine you are back in God's white light.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-name">Raise Your Vibe</div>
+        <p class="step-text">If you're feeling low, take a few minutes to dance, listen to music, or breathe deeply until you feel uplifted and in a high-vibrational state.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAR MIND CLUTTER - STEP FOUR -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step Four</p>
+    <h2 class="section-title">Clear Your <em>Mind Clutter</em></h2>
+    <p class="body-text">If you're worried about distractions, take a few minutes before you start writing to jot down anything that's on your mind. By acknowledging these thoughts, you set them aside so they don't interfere with your session.</p>
+  </div>
+
+  <!-- SET INTENTION - STEP FIVE -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step Five</p>
+    <h2 class="section-title">Set Your <em>Intention</em></h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-name">Pick a Guide</div>
+        <p class="step-text">Decide who you want to connect with, whether it's your higher self, a specific guide, or God. State this clearly before you begin.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-name">Clarify Your Needs</div>
+        <p class="step-text">Let your guides know what guidance you're seeking, what issue you're working through, or what decision you want to make. Ask for the best guide to step forward.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-name">Trust They Are With You</div>
+        <p class="step-text">Imagine a room filled with your spiritual team: your guides, angels, and higher self, nodding and understanding exactly what you've asked for. See one stepping forward, ready to assist.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECT & RECEIVE - STEP SIX -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Step Six</p>
+    <h2 class="section-title">Connect <em>&amp; Receive</em></h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-name">Write Down Your Prompt</div>
+        <p class="step-text">Write a question at the top of your journal page to set the intention and focus your session. Use the prompts in the next section to get started.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-name">Trust You Are Receiving</div>
+        <p class="step-text">Close your eyes and visualize your crown chakra opening like a flower. Picture an antenna extending from your crown, reaching up to the divine and drawing down light and information.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-name">Just Start Writing</div>
+        <p class="step-text">Don't worry about spelling or grammar. Just let whatever comes through flow onto the page. Even if it feels like you're making it up, keep going. The more you write, the more you'll recognise the voice of your guides.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPTS -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Prompts</p>
+    <h2 class="section-title">To Get You <em>Started</em></h2>
+    <p class="body-text">Use a prompt at the top of your journal page to help set the intention for your session and to help you focus on receiving the guidance you seek.</p>
+
+    <div class="prompts-wrap">
+      <div class="prompt-item">What messages do my guides have for me today?</div>
+      <div class="prompt-item">What do I need to know that is for my highest good today?</div>
+      <div class="prompt-item">What is the next step in my career? What do I need to know about my career?</div>
+      <div class="prompt-item">What is the next step on my spiritual journey?</div>
+      <div class="prompt-item">How can I best overcome the current challenge that I'm facing with respect to _______ in a way that is for my highest and best good?</div>
+    </div>
+
+    <div class="callout" style="margin-top:24px;">
+      <p class="callout-title">A gentle reminder</p>
+      <p>Spirit cannot tell you what to do. Guidance comes through as insights, clarity, and perspective. The choices always remain yours.</p>
+    </div>
+  </div>
+
+  <!-- PREPARATION CHECKLIST - after all steps -->
+  <div class="section">
+    <hr class="section-rule">
+    <p class="section-label">Your Quick Reference</p>
+    <h2 class="section-title">Preparation <em>Checklist</em></h2>
+    <p class="body-text" style="margin-bottom:32px;">Use this checklist before each automatic writing session. Click each item as you complete it.</p>
+
+    <div class="checklist-card">
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Pick a dedicated pen &amp; journal</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Safety checklist (intentions, protective beings, pillar of light)</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Create your sacred space</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Prepare your energy</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Clear your mind clutter</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Set clear intentions</span>
+      </div>
+      <div class="checklist-item" onclick="toggle(this)">
+        <div class="check-box"></div>
+        <span>Connect and receive</span>
+      </div>
+    </div>
+
+    <div class="print-btn-wrap">
+      <button class="print-btn" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"/>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          <rect x="6" y="14" width="12" height="8"/>
+        </svg>
+        Print This Guide
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSE / CTA -->
+<div class="close-section">
+  <div class="close-inner">
+    <div class="ornament">· · ·</div>
+    <h2 class="close-title">Want more practical tools to get clear answers?</h2>
+    <p class="close-body">My newly launched Timeline Jumpers community on Skool will contain more tools to help you get guidance and answers from your higher self &amp; spirit team in the Stabilization Tools section. This new community is all about living the reality you want to live and that includes being able to get guidance from the divine.</p>
+    <a href="https://www.skool.com/timeline-jumpers-9976/about" class="cta-btn">Start 7-Day Free Trial</a>
+    <div class="ornament" style="margin-top:48px;">· · ·</div>
+  </div>
+</div>
+
+<div class="footer">
+  © 2026 Ceyda Seren &nbsp;·&nbsp; ceydaseren.com &nbsp;·&nbsp; All rights reserved
+</div>
+
+<script>
+  function toggle(item) {
+    const box = item.querySelector('.check-box');
+    const span = item.querySelector('span');
+    const isDone = box.classList.contains('checked');
+    box.classList.toggle('checked', !isDone);
+    item.classList.toggle('done', !isDone);
+  }
+</script>
+
+</body>
+</html>
